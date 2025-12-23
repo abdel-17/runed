@@ -25,4 +25,18 @@ describe("LazyState", () => {
 		expect(counter.initialized).toBe(true);
 		expect(factory).toHaveBeenCalledTimes(0);
 	});
+
+	it("is reactive", () => {
+		const counter = new LazyState(() => 1);
+		const doubled = $derived(counter.current * 2);
+		const message = $derived(counter.initialized ? "initialized" : "not initialized");
+		expect(message).toBe("not initialized");
+
+		expect(doubled).toBe(2);
+		expect(message).toBe("initialized");
+
+		counter.current = 2;
+		expect(doubled).toBe(4);
+		expect(message).toBe("initialized");
+	});
 });
