@@ -14,7 +14,8 @@ This is useful for deferring expensive initializations until they're actually ne
 
 ## Demo
 
-This is a demo of a large tree whose children are lazily initialized. Check the console for initialization logs.
+This is a demo of a large tree whose children are lazily initialized. Check the console for
+initialization logs.
 
 <Demo />
 
