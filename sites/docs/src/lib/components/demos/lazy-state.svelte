@@ -102,7 +102,5 @@
 {/snippet}
 
 <DemoContainer class="h-100 overflow-y-auto">
-	<div>
-		{@render treeitems(root, null, 0)}
-	</div>
+	{@render treeitems(root, null, 0)}
 </DemoContainer>
