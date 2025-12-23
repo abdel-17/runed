@@ -16,7 +16,7 @@ export class LazyState<T> {
 	}
 
 	#current: T | undefined = $state();
-	#initialized = false;
+	#initialized = $state.raw(false);
 
 	/** The current value of this object. */
 	get current(): T {
@@ -32,5 +32,10 @@ export class LazyState<T> {
 	set current(value: T) {
 		this.#current = value;
 		this.#initialized = true;
+	}
+
+	/** Whether the `current` property has been initialized. */
+	get initialized(): boolean {
+		return this.#initialized;
 	}
 }

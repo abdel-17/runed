@@ -25,10 +25,12 @@ initialization logs.
 import { LazyState } from "runed";
 
 const expensiveValue = new LazyState(() => performExpensiveComputation());
+expensiveValue.initialized === false;
 
 // Accessing the `current` property for the first time initializes it
 // with the result of the `performExpensiveComputation` function.
 expensiveValue.current;
+expensiveValue.initialized === true;
 
 // Accessing the `current` property again does not call the function.
 expensiveValue.current;
@@ -43,5 +45,7 @@ class LazyState<T> {
 	get current(): T;
 
 	set current(value: T);
+
+	get initialized(): boolean;
 }
 ```
